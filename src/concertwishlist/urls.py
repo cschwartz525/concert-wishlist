@@ -6,5 +6,7 @@ urlpatterns = [
     # url(r'^$', 'concertwishlist.views.home', name='home'),
     # url(r'^blog/', include('blog.urls')),
 
+    url(r'^$', 'wishlist.views.home', name='home'),
+
     url(r'^admin/', include(admin.site.urls)),
 ]
