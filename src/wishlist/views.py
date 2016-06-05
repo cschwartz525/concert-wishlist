@@ -26,9 +26,10 @@ def parseEventData(data):
     for item in data['events']:
         dt = datetime.datetime.strptime(item['datetime_local'], "%Y-%m-%dT%H:%M:%S")
         event = {
+            'id': item['id'],
             'title': item['title'],
             'venue': item['venue']['name'],
-            'datetime': dt.strftime('%Y-%m-%d %I:%M %p')
+            'datetime': dt.strftime('%Y-%m-%d %I:%M %p'),
         }
         events.append(event)
     return events
