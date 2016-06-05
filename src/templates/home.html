@@ -4,5 +4,13 @@
   </head>
   <body>
     <h1>{{ title }}</h1>
+    {% for event in events %}
+        title: {{ event.title }}
+        <br />
+        venue: {{ event.venue }}
+        <br />
+        time: {{ event.datetime }}
+        <br /><br />
+    {% endfor %}
   </body>
 </html>
