@@ -7,6 +7,13 @@
   </head>
   <body>
     <h1>{{ title }}</h1>
+
+    <form name="searchForm" method="POST" action="">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <input type="submit" value="Search" />
+    </form>
+
     {% for event in events %}
         title: {{ event.title }}
         <br />
