@@ -6,21 +6,33 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
   </head>
   <body>
-    <h1>{{ title }}</h1>
+    <div class="container">
+      <h1>{{ title }}</h1>
 
-    <form name="searchForm" method="POST" action="">
-      {% csrf_token %}
-      {{ form.as_p }}
-      <input type="submit" value="Search" />
-    </form>
+      <div class="jumbotron">
+        <form name="searchForm" method="POST" action="">
+          {% csrf_token %}
+          {{ form.as_p }}
+          <input type="submit" value="Search" />
+        </form>
+      </div>
 
-    {% for event in events %}
-        title: {{ event.title }}
-        <br />
-        venue: {{ event.venue }}
-        <br />
-        time: {{ event.datetime }}
-        <br /><br />
-    {% endfor %}
+      <div class="jumbotron">
+        <h4>Events:</h4>
+        {% for event in events %}
+            <div class="row">
+              <div class="col-xs-6">
+                <strong>title: {{ event.title }}</strong>
+              </div>
+              <div class="col-xs-3">
+                venue: {{ event.venue }}
+              </div>
+              <div class="col-xs-3">
+                time: {{ event.datetime }}
+              </div>
+            </div>
+        {% endfor %}
+      </div>
+    </div>
   </body>
 </html>
