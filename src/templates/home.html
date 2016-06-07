@@ -34,7 +34,7 @@
           </div>
         {% endif %}
         {% for event in events %}
-            <a href="#">
+            <a href="/event/{{ event.id }}">
               <div class="data-item row">
                 <div class="col-xs-6">
                   <strong>{{ event.title }}</strong>
@@ -50,7 +50,7 @@
         {% endfor %}
         {% if events %}
           <a href="#">
-            <div class="next-link text-center row">
+            <div class="button-link text-center row">
               Next
             </div>
           </a>

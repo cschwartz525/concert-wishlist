@@ -37,7 +37,6 @@ def home(request):
 
     return render(request, 'home.html', context)
 
-
 def parseEventData(data):
     events = []
     for item in data['events']:
@@ -50,3 +49,13 @@ def parseEventData(data):
         }
         events.append(event)
     return events
+
+def event(request, eventId):
+    title = 'Event'
+
+    context = {
+        'title': title,
+        'eventId': eventId,
+    }
+
+    return render(request, 'event.html', context)
