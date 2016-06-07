@@ -4,16 +4,49 @@
     <meta charset="utf-8" />
     <title>{{ title }}</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+    {% load staticfiles %}
+    <link rel="stylesheet" type="text/css" href="{% static 'wishlist/style/main.css' %}" />
   </head>
   <body>
-    <h1>{{ title }}</h1>
-    {% for event in events %}
-        title: {{ event.title }}
-        <br />
-        venue: {{ event.venue }}
-        <br />
-        time: {{ event.datetime }}
-        <br /><br />
-    {% endfor %}
+    <div class="container">
+      <h1 class="text-center">{{ title }}</h1>
+
+      <div class="jumbotron">
+        <form name="searchForm" method="POST" action="">
+          {% csrf_token %}
+          {{ form.as_p }}
+          <input type="submit" value="Search" />
+        </form>
+      </div>
+
+      <div class="jumbotron">
+        {% if events %}
+          <div class="heading row">
+            <div class="col-xs-6">
+              <h4>Title</h4>
+            </div>
+            <div class="col-xs-3">
+              <h4>Venue</h4>
+            </div>
+            <div class="col-xs-3">
+              <h4>Time</h4>
+            </div>
+          </div>
+        {% endif %}
+        {% for event in events %}
+            <div class="data-item row">
+              <div class="col-xs-6">
+                <strong>{{ event.title }}</strong>
+              </div>
+              <div class="col-xs-3">
+                {{ event.venue }}
+              </div>
+              <div class="col-xs-3">
+                {{ event.datetime }}
+              </div>
+            </div>
+        {% endfor %}
+      </div>
+    </div>
   </body>
 </html>

@@ -1,21 +1,38 @@
 from django.shortcuts import render
 
+from .forms import SearchForm
+
 import datetime
 import json
 import requests
+import urllib
 
 # Create your views here.
 def home(request):
     title = 'Concert Wishlist'
+    form = SearchForm(request.POST or None)
 
-    page = 1
-    response = requests.get('https://api.seatgeek.com/2/events?venue.city=New%20York&page=' + str(page))
-    data = json.loads(response.text)
-    events = parseEventData(data)
+    events = []
+
+    if form.is_valid():
+        form_param_key = form.cleaned_data.get('param_key')
+        form_param_value = form.cleaned_data.get('param_value')
+        form_page = form.cleaned_data.get('page')
+
+        params = {
+            'page': form_page,
+            form_param_key: form_param_value,
+        }
+
+        url = "https://api.seatgeek.com/2/events?%s" % (urllib.urlencode(params))
+        response = requests.get(url)
+        data = json.loads(response.text)
+        events = parseEventData(data)
 
     context = {
         'title': title,
-        'events': events
+        'form': form,
+        'events': events,
     }
 
     return render(request, 'home.html', context)

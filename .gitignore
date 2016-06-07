@@ -30,6 +30,8 @@ var/
 .installed.cfg
 *.egg
 pip-selfcheck.json
+/static/
+/media/
 
 # PyInstaller
 #  Usually these files are written by a python script from a template
