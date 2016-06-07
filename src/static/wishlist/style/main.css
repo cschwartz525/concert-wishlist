@@ -21,6 +21,10 @@
   padding: 10px;
 }
 
+.text-center {
+  text-align: center;
+}
+
 h4 {
   font-weight: inherit;
 }

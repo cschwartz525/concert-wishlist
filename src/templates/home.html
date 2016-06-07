@@ -4,6 +4,8 @@
     <meta charset="utf-8" />
     <title>{{ title }}</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+    {% load staticfiles %}
+    <link rel="stylesheet" type="text/css" href="{% static 'wishlist/style/main.css' %}" />
   </head>
   <body>
     <div class="container">
@@ -18,17 +20,29 @@
       </div>
 
       <div class="jumbotron">
-        <h4>Events:</h4>
+        {% if events %}
+          <div class="heading row">
+            <div class="col-xs-6">
+              <h4>Title</h4>
+            </div>
+            <div class="col-xs-3">
+              <h4>Venue</h4>
+            </div>
+            <div class="col-xs-3">
+              <h4>Time</h4>
+            </div>
+          </div>
+        {% endif %}
         {% for event in events %}
-            <div class="row">
+            <div class="data-item row">
               <div class="col-xs-6">
-                <strong>title: {{ event.title }}</strong>
+                <strong>{{ event.title }}</strong>
               </div>
               <div class="col-xs-3">
-                venue: {{ event.venue }}
+                {{ event.venue }}
               </div>
               <div class="col-xs-3">
-                time: {{ event.datetime }}
+                {{ event.datetime }}
               </div>
             </div>
         {% endfor %}
