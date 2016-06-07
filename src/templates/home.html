@@ -34,17 +34,19 @@
           </div>
         {% endif %}
         {% for event in events %}
-            <div class="data-item row">
-              <div class="col-xs-6">
-                <strong>{{ event.title }}</strong>
+            <a href="#">
+              <div class="data-item row">
+                <div class="col-xs-6">
+                  <strong>{{ event.title }}</strong>
+                </div>
+                <div class="col-xs-3">
+                  {{ event.venue }}
+                </div>
+                <div class="col-xs-3">
+                  {{ event.datetime }}
+                </div>
               </div>
-              <div class="col-xs-3">
-                {{ event.venue }}
-              </div>
-              <div class="col-xs-3">
-                {{ event.datetime }}
-              </div>
-            </div>
+            </a>
         {% endfor %}
         {% if events %}
           <a href="#">

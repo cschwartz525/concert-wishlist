@@ -10,15 +10,13 @@
 .data-item {
   background-color: #cccccc;
   border-radius: 5px;
+  color: #000000;
   margin: 5px;
   padding: 10px;
 }
 
 .data-item:hover {
   background-color: #aaaaaa;
-  border-radius: 5px;
-  margin: 5px;
-  padding: 10px;
 }
 
 .next-link {
@@ -28,6 +26,10 @@
   font-weight: bold;
   margin: 5px;
   padding: 10px;
+}
+
+.next-link:hover {
+  background-color: #555555;
 }
 
 .text-center {
