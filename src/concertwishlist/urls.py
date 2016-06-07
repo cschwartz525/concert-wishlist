@@ -7,6 +7,7 @@ urlpatterns = [
     # url(r'^blog/', include('blog.urls')),
 
     url(r'^$', 'wishlist.views.home', name='home'),
+    url(r'^event/(?P<eventId>(\d+))/$', 'wishlist.views.event', name='event'),
 
     url(r'^admin/', include(admin.site.urls)),
 ]
