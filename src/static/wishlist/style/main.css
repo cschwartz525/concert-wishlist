@@ -19,7 +19,7 @@
   background-color: #aaaaaa;
 }
 
-.next-link {
+.button-link {
   background-color: #333333;
   border-radius: 5px;
   color: #ffffff;
@@ -28,7 +28,7 @@
   padding: 10px;
 }
 
-.next-link:hover {
+.button-link:hover {
   background-color: #555555;
 }
 
