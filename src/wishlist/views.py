@@ -24,7 +24,7 @@ def home(request):
             form_param_key: form_param_value,
         }
 
-        url = "https://api.seatgeek.com/2/events?%s" % (urllib.urlencode(params))
+        url = 'https://api.seatgeek.com/2/events?%s' % (urllib.urlencode(params))
         response = requests.get(url)
         data = json.loads(response.text)
         events = parseEventData(data)
@@ -53,9 +53,21 @@ def parseEventData(data):
 def event(request, eventId):
     title = 'Event'
 
+    url = 'https://api.seatgeek.com/2/events/' + eventId
+    response = requests.get(url)
+    data = json.loads(response.text)
+
+    dt = datetime.datetime.strptime(data['datetime_local'], "%Y-%m-%dT%H:%M:%S")
+    event = {
+        'id': data['id'],
+        'title': data['title'],
+        'venue': data['venue']['name'],
+        'datetime': dt.strftime('%Y-%m-%d %I:%M %p'),
+    }
+
     context = {
         'title': title,
-        'eventId': eventId,
+        'event': event,
     }
 
     return render(request, 'event.html', context)
